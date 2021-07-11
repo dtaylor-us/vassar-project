@@ -4,6 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "server": "nodemon server.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently --kill-others-on-fail \"npm run client\" \"npm run server\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +21,7 @@
   "homepage": "https://github.com/dtaylor-us/vassar-project#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "concurrently": "^6.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.1"
   },

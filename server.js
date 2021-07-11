@@ -4,6 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
+const api = require('./routes/routes');
 
 // Create a new express application named 'app'
 const app = express();
@@ -23,6 +24,9 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+// Configure app to use route
+app.use('/api/v1/', api);
+
 // Configure the CORs middleware
 app.use(cors());
 
@@ -41,6 +45,7 @@ app.get('*', (req, res) => {
         msg: 'Catch All'
     });
 });
+
 
 // Configure our server to listen on the port defiend by our port variable
 app.listen(port, () => console.log(`BACK_END_SERVICE_PORT: ${port}`));

@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: ./Dockerfile
+    environment:
+      API_HOST: ${API_HOST}
+      APP_SERVER_PORT: ${APP_SERVER_PORT}
+    image: "dtaylor-us/vassar-server"
+    ports:
+      - ${APP_SERVER_PORT}:${APP_SERVER_PORT}
+    volumes:
+      - ./server/src:/server/app/src
+    command: node server.js
+  client:
+    build:
+      context: ./client
+      dockerfile: ./Dockerfile
+    environment:
+      - REACT_APP_PORT=${REACT_APP_PORT}
+    expose:
+      - ${REACT_APP_PORT}
+    image: "dtaylor-us/vassar-client"
+    ports:
+      - ${REACT_APP_PORT}:${REACT_APP_PORT}
+    volumes:
+      - ./client/src:/srv/app/src
+      - ./client/public:/srv/app/public
+    links:
+      - server
+    command: npm run start

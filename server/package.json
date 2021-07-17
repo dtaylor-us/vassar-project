@@ -2,12 +2,12 @@
   "name": "vassar",
   "version": "1.0.0",
   "description": "",
-  "main": "server/src/server.js",
+  "main": "src/server.js",
   "scripts": {
-    "server": "node_modules/.bin/nodemon server/src/server.js",
-    "client": "cd client && npm start",
-    "client:build": "cd client && npm run build",
-    "dev": "node_modules/.bin/concurrently --kill-others-on-fail \\\\\\\"npm run client\\\\\\\" \\\\\\\"npm run server\\\\\\\"",
+    "server": "nodemon /src/server.js",
+    "client": "cd ../client && npm start",
+    "client:build": "cd ../client && npm run build",
+    "dev": "concurrently --kill-others-on-fail \"npm run client\" \"npm run server\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

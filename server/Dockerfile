@@ -4,12 +4,14 @@ LABEL version="1.0"
 LABEL description="This is the base docker image for the backend API."
 LABEL maintainer = ["derektaylor.us@gmail.com"]
 
-WORKDIR /app
+WORKDIR /srv/app
 
-COPY ["package.json", "package-lock.json", "./"]
+COPY "package.json" /srv/app
+COPY "package-lock.json" /srv/app
+
 RUN ls
 RUN npm install --production
-COPY . .
+COPY . /srv/app
 
 EXPOSE 5000
 

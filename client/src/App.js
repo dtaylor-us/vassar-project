@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import axios from 'axios'
+import Album from "./Album";
 
 class App extends Component {
     state = {
@@ -17,8 +18,8 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <h1>Hello from the frontend!</h1>
                 <h1>{this.state.response.body}</h1>
+                <Album/>
             </div>
         );
     }

@@ -12,7 +12,7 @@ const PersonSchema = mongoose.Schema({
         sister: {
             type: String,
             required: true,
-            enum: ['BEA', 'LOLA', 'EULA', 'MERT', 'BOO', 'ELOISE', 'PETIE',]
+            enum: ['BEA', 'LOLA', 'EULA', 'MERT', 'BOO', 'ELOISE', 'PETIE']
         },
         relationship: {
             type: String,

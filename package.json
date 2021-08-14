@@ -7,7 +7,7 @@
     "start": "node src/server.js",
     "server": "nodemon src/server.js",
     "client": "cd client && npm start",
-    "heroku": "cd client && npm run build",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "dev": "concurrently --kill-others-on-fail \"npm run client\" \"npm run server\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

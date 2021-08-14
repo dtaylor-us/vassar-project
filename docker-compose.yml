@@ -3,8 +3,8 @@ version: '3'
 services:
   server:
     build:
-      context: ./server
-      dockerfile: ./Dockerfile
+      context: .
+      dockerfile: Dockerfile
     environment:
       API_HOST: ${API_HOST}
       APP_SERVER_PORT: ${APP_SERVER_PORT}
@@ -12,7 +12,7 @@ services:
     ports:
       - ${APP_SERVER_PORT}:${APP_SERVER_PORT}
     volumes:
-      - ./server/src:/server/app/src
+      - .src:/server/app/src
     command: node server.js
   client:
     build:

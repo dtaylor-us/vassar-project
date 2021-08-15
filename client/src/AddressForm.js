@@ -30,9 +30,6 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
-    appBar: {
-        position: 'relative',
-    },
     layout: {
         width: 'auto',
         marginLeft: theme.spacing(2),
@@ -53,9 +50,6 @@ const useStyles = makeStyles((theme) => ({
             padding: theme.spacing(3),
         },
     },
-    stepper: {
-        padding: theme.spacing(3, 0, 5),
-    },
     buttons: {
         display: 'flex',
         justifyContent: 'flex-end',
@@ -66,28 +60,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const steps = ['Shipping address'];
-
-function getStepContent(step) {
-    switch (step) {
-        case 0:
-            return <AddressForm/>;
-    }
-}
-
 export default function Checkout() {
     const classes = useStyles();
 
     return (
         <React.Fragment>
             <CssBaseline/>
-            <AppBar position="absolute" color="default" className={classes.appBar}>
-                <Toolbar>
-                    <Typography variant="h6" color="inherit" noWrap>
-                        Company name
-                    </Typography>
-                </Toolbar>
-            </AppBar>
             <main className={classes.layout}>
                 <Paper className={classes.paper}>
                     <Typography component="h1" variant="h4" align="center">

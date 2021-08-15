@@ -4,6 +4,7 @@ import axios from 'axios'
 import Album from "./Album";
 import AddressForm from "./AddressForm";
 import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
+import SimpleMenu from "./Menu";
 
 class App extends Component {
     state = {
@@ -21,19 +22,8 @@ class App extends Component {
         return (
             <Router>
                 <div>
-                    <nav>
-                        <ul>
-                            <li>
-                                <Link to="/">Home</Link>
-                            </li>
-                            <li>
-                                <Link to="/album">Album</Link>
-                            </li>
-                            <li>
-                                <Link to="/form">AddressForm</Link>
-                            </li>
-                        </ul>
-                    </nav>
+                    <SimpleMenu/>
+
 
                     {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}

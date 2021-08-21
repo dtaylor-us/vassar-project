@@ -1,4 +1,4 @@
-const Person = require('../db/person.model.js');
+const Person = require('../models/person.model.js');
 
 const saySomething = (req, res, next) => {
     res.status(200).json({
@@ -9,7 +9,7 @@ const saySomething = (req, res, next) => {
 
 function validateRequest(req) {
     const messages = [];
-    console.log(req.body)
+
     if (!req.body.firstName) {
         messages.push("Person first name can not be empty");
         console.log(1)

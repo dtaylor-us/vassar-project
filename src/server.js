@@ -4,9 +4,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
-const api = require('./routes/routes');
+const personRoutes = require('./routes/person.routes');
 const dbConfig = require('./config/db.config.js');
-
+const db = require("./models");
+const Role = db.role;
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
@@ -18,6 +19,7 @@ mongoose.connect(mongoUrl, {
     useUnifiedTopology: true
 }).then(() => {
     console.log("Successfully connected to the database");
+    initial();
 }).catch(err => {
     console.log('Could not connect to the database. Exiting now...', err);
     process.exit();
@@ -42,7 +44,9 @@ app.use(bodyParser.urlencoded({
 }));
 
 // Configure app to use route
-app.use('/api/v1/', api);
+app.use('/api/v1/', personRoutes);
+require('./routes/auth.routes')(app);
+require('./routes/user.routes')(app);
 
 // Configure the CORs middleware
 app.use(cors());
@@ -65,3 +69,39 @@ app.get('*', (req, res) => {
 
 // Configure our server to listen on the port defiend by our port variable
 app.listen(port, () => console.log(`BACK_END_SERVICE_PORT: ${port}`));
+
+function initial() {
+    Role.estimatedDocumentCount((err, count) => {
+        if (!err && count === 0) {
+            new Role({
+                name: "user"
+            }).save(err => {
+                if (err) {
+                    console.log("error", err);
+                }
+
+                console.log("added 'user' to roles collection");
+            });
+
+            new Role({
+                name: "moderator"
+            }).save(err => {
+                if (err) {
+                    console.log("error", err);
+                }
+
+                console.log("added 'moderator' to roles collection");
+            });
+
+            new Role({
+                name: "admin"
+            }).save(err => {
+                if (err) {
+                    console.log("error", err);
+                }
+
+                console.log("added 'admin' to roles collection");
+            });
+        }
+    });
+}

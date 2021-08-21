@@ -12,12 +12,23 @@ const PersonSchema = mongoose.Schema({
         sister: {
             type: String,
             required: true,
-            enum: ['BEA', 'LOLA', 'EULA', 'MERT', 'BOO', 'ELOISE', 'PETIE']
+            enum: [
+                'BEA',
+                'LOLA',
+                'EULA',
+                'MERT',
+                'BOO',
+                'ELOISE',
+                'PETIE']
         },
         relationship: {
             type: String,
             required: true,
-            enum: ['SELF', 'PARENT', 'CHILD', 'GRANDCHILD']
+            enum: [
+                'SELF',
+                'PARENT',
+                'CHILD',
+                'GRANDCHILD']
         },
         children: [{type: mongoose.Schema.Types.ObjectId, ref: 'Person'}],
         email: String,

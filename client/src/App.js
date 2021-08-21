@@ -1,9 +1,9 @@
-import React, {Component, useState, useEffect} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import './App.css';
 import axios from 'axios'
 import Album from "./Album";
-import AddressForm from "./AddressForm";
-import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
+import AddressForm from "./PersonForm";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import SimpleMenu from "./Menu";
 
 class App extends Component {

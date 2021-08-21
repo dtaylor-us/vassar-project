@@ -9,21 +9,29 @@ const saySomething = (req, res, next) => {
 
 function validateRequest(req) {
     const messages = [];
-
+    console.log(req.body)
     if (!req.body.firstName) {
         messages.push("Person first name can not be empty");
+        console.log(1)
+
     }
     if (!req.body.lastName) {
         messages.push("Person last name can not be empty");
+        console.log(2)
+
     }
     if (!req.body.sister) {
         messages.push("Must specify which sister this person is related to");
+        console.log(3)
+
     }
     if (!req.body.relationship) {
-        messages.push("Must specify which sister this person is related to");
+        messages.push("Must specify which a relationship");
+        console.log(4)
+
     }
     if (messages.length > 0) {
-        return messages.pop();
+        return messages[0];
     }
 
 }

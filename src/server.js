@@ -1,4 +1,5 @@
 // Import dependencies
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -10,7 +11,9 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 // Connecting to the database
-mongoose.connect(dbConfig.url, {
+let mongoUrl = process.env.ENV === 'production' ? process.env.MONGO_URL : dbConfig.url;
+
+mongoose.connect(mongoUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {

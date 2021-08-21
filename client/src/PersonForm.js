@@ -143,9 +143,7 @@ export default function PersonForm() {
                 window.location = "/home" //This line of code will redirect you once the submission is succeed
             }).catch(err => {
                 console.log(err.response.data.message)
-
             setOpen(true)
-
             setMessage(err.response.data.message)
             console.log('ERROR!!!!!!')
 

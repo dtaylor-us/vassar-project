@@ -4,7 +4,8 @@ import axios from 'axios'
 import Album from "./Album";
 import AddressForm from "./PersonForm";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import SimpleMenu from "./Menu";
+import SimpleMenu from "./SimpleMenu";
+import Footer from "./Footer";
 
 class App extends Component {
     state = {
@@ -23,8 +24,6 @@ class App extends Component {
             <Router>
                 <div>
                     <SimpleMenu/>
-
-
                     {/* A <Switch> looks through its children <Route>s and
                      renders the first one that matches the current URL. */}
                     <Switch>
@@ -38,6 +37,7 @@ class App extends Component {
                             <Home/>
                         </Route>
                     </Switch>
+                    <Footer/>
                 </div>
             </Router>
         );

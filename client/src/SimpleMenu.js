@@ -7,8 +7,9 @@ import {useHistory} from 'react-router-dom';
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import MenuIcon from '@material-ui/icons/Menu';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     button: {
         color: '#eee'
     },
@@ -18,6 +19,12 @@ const useStyles = makeStyles((theme) => ({
     title: {
         flexGrow: 1,
     },
+    simpleMenu: {
+        '& div': {
+
+            width: '100px'
+        }
+    }
 }));
 
 const menuItem = (title, path) => {
@@ -60,17 +67,18 @@ export default function SimpleMenu() {
                         <div className={classes.menu}>
                             <Button className={classes.button} aria-controls="simple-menu" aria-haspopup="true"
                                     onClick={handleClick}>
-                                Open Menu
+                                <MenuIcon/>
                             </Button>
                             <Menu
                                 id="simple-menu"
                                 anchorEl={anchorEl}
                                 keepMounted
+                                className={classes.simpleMenu}
                                 open={Boolean(anchorEl)}
                                 onClose={handleClose}>
-                                {menuItems.map(i => <MenuItem onClick={() => handleClose(i.path)}>{i.title}</MenuItem>)}
-
-                            </Menu></div>
+                                {menuItems.map(i => <MenuItem key={i.path} onClick={() => handleClose(i.path)}>{i.title}</MenuItem>)}
+                            </Menu>
+                        </div>
                     </Toolbar>
                 </AppBar>
             </div>
